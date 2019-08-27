@@ -14,4 +14,4 @@ set (msgs
 PROTOBUF_GENERATE_CPP(PROTO_SRCS PROTO_HDRS ${msgs})
 add_library(reset_world_request_msgs SHARED ${PROTO_SRCS})
 target_link_libraries(reset_world_request_msgs ${PROTOBUF_LIBRARY})
-#install(TARGETS reset_world_request_msgs DESTINATION ${GAZEBO_PLUGIN_PATH})
+install(TARGETS reset_world_request_msgs DESTINATION ${GAZEBO_PLUGIN_PATH})
