@@ -40,3 +40,12 @@ target_link_libraries(
   )
 add_dependencies(gui_resetworld reset_world_request_msgs)
 install(TARGETS gui_resetworld DESTINATION ${GAZEBO_PLUGIN_PATH})
+
+add_library(ResetWorld SHARED ResetWorld.cc)
+target_link_libraries(
+  ResetWorld 
+  ${GAZEBO_LIBRARIES}
+  reset_world_request_msgs
+  )
+add_dependencies(ResetWorld reset_world_request_msgs)
+install(TARGETS ResetWorld DESTINATION ${GAZEBO_PLUGIN_PATH})

@@ -8,16 +8,26 @@
 #include <gazebo/gazebo.hh>
 #include "ResetWorld.hh"
 
+#include "reset_world_request.pb.h"
+
 using namespace gazebo;
 
 GZ_REGISTER_WORLD_PLUGIN(ResetWorld)
 
 
-ResetWorld::ResetWorld()
+// ResetWorld::ResetWorld()
+// {
+
+// }
+void ResetWorld::Callback(ResetWorldRequestPtr &_msg)
 {
 
-}
+    if (_msg->DebugString() == "Hello World")
+    {
+        gzdbg << "Hi" << std::endl;
+    }
 
+}
 
 void ResetWorld::Load(physics::WorldPtr _world, sdf::ElementPtr _sdf)
 {
@@ -28,7 +38,7 @@ void ResetWorld::Load(physics::WorldPtr _world, sdf::ElementPtr _sdf)
     node->Init();
 
     // Listen to Gazebo reset world topic
-    gazebo::transport::SubscriberPtr sub = node->Subscribe(this->topic_name, this->Callback);
+    gazebo::transport::SubscriberPtr sub = node->Subscribe(this->topic_name, Callback);
 
 
     // Busy wait loop
@@ -39,8 +49,3 @@ void ResetWorld::Load(physics::WorldPtr _world, sdf::ElementPtr _sdf)
 }
 
 
-void ResetWorld::Callback(ConstWorldStatisticsPtr &_msg)
-{
-    gzdbg << _msg->DebugString() << std::endl;
-
-}

@@ -14,5 +14,8 @@
     <include>
       <uri>model://ground_plane</uri>
     </include>
+
+
+    <plugin name="listen" filename="libResetWorld.so"/>
   </world>
 </sdf>

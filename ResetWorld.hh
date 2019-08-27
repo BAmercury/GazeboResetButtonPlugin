@@ -8,14 +8,17 @@
 #include <gazebo/common/Event.hh>
 #include <stdio.h>
 
-
+#include "reset_world_request.pb.h"
 namespace gazebo
 {
     class GAZEBO_VISIBLE ResetWorld : public WorldPlugin
     {
         // Constructor
-        public: ResetWorld();
-
+        //public: ResetWorld();
+        // Pointer for custom message
+        public: typedef const boost::shared_ptr<
+            const reset_world_request_msgs::msgs::ResetWorldRequest>
+                ResetWorldRequestPtr;
 
         public: virtual void Load(physics::WorldPtr _world, sdf::ElementPtr _sdf);
 
@@ -23,10 +26,12 @@ namespace gazebo
         //private: void OnUpdate();
 
         // Callback for topic subscriber
-        private: void Callback(ConstWorldStatisticsPtr &_msg);
+        public: static void Callback(ResetWorldRequestPtr &_msg);
+
+
 
         // Gazebo topic name for subscriber
-        private: std::string topic_name = "topic";
+        private: std::string topic_name = "~/world_reset";
 
 
         // Pointer for the world
@@ -34,6 +39,8 @@ namespace gazebo
 
         // Connection Pointer for world update events
         private: event::ConnectionPtr updateConnection;
+
+
 
 
 
