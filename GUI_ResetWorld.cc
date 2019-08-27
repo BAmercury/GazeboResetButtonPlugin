@@ -5,9 +5,6 @@
 #include "GUI_ResetWorld.hh"
 #include <gazebo/transport/transport.hh>
 
-
-
-
 #include "reset_world_request.pb.h"
 #include "gz_string.pb.h"
 
@@ -58,10 +55,26 @@ GUI_ResetWorld::GUI_ResetWorld() : GUIPlugin()
     // Create node for transportation
     this->node = gazebo::transport::NodePtr(new gazebo::transport::Node());
     this->node->Init();
-    this->flagPub = this->node->Advertise<reset_world_request_msgs::msgs::ResetWorldRequest>("~/world_reset");
+    //this->flagPub = this->node->Advertise<reset_world_request_msgs::msgs::ResetWorldRequest>("~/world_reset");
+    
+    //this->flagPub->WaitForConnection();
+    //reset_world_request_msgs::msgs::ResetWorldRequest request;
+    //request.set_data("Test");
+    
+    //this->flagPub->Publish(request);
+    //gazebo::transport::fini();
 
+}
+
+
+// Callback function for button
+void GUI_ResetWorld::OnButton()
+{
     this->flagPub->WaitForConnection();
-    //this->flagPub->Publish("Test");
+    reset_world_request_msgs::msgs::ResetWorldRequest msg_request;
+    msg_request.set_data("Test");
+    this->flagPub->Publish(msg_request);
     gazebo::transport::fini();
 
 }
+

@@ -7,7 +7,7 @@
 #include <gazebo/common/Plugin.hh>
 #include <gazebo/gui/GuiPlugin.hh>
 #include <gazebo/transport/transport.hh>
-#include <gazebo/gui/gui.hh>
+//#include <gazebo/gui/gui.hh>
 #include <gazebo/physics/physics.hh>
 
 
@@ -24,7 +24,7 @@ namespace gazebo
         //public: virtual ~GUI_ResetWorld();
 
         // Callback triggered when the button is pressed
-        //protected slots: void OnButton();
+        protected slots: void OnButton();
 
         // Node used to establish communication with gzserver
         private: transport::NodePtr node;
@@ -33,7 +33,7 @@ namespace gazebo
         private: transport::PublisherPtr flagPub;
 
         // Pointer for the world
-        private: physics::WorldPtr _world;
+        //private: physics::WorldPtr _world;
 
 
 

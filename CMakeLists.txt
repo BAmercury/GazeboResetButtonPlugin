@@ -18,7 +18,7 @@ link_directories(
   )
 add_subdirectory(msgs)
 
-set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GAZEBO_CXX_FLAGS}")
+#set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GAZEBO_CXX_FLAGS}")
 
 # add_library(gui_example_spawn_widget SHARED ${headers_MOC}
 #   GUIExampleSpawnWidget.cc)
@@ -30,7 +30,8 @@ set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GAZEBO_CXX_FLAGS}")
 
 add_library(gui_resetworld SHARED ${headers_MOC}
   GUI_ResetWorld.cc)
-target_link_libraries(gui_resetworld 
+target_link_libraries(
+  gui_resetworld 
   reset_world_request_msgs
   ${GAZEBO_LIBRARIES}
   ${Qt5Core_LIBRARIES}
