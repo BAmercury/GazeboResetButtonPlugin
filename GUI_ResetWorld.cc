@@ -55,8 +55,8 @@ GUI_ResetWorld::GUI_ResetWorld() : GUIPlugin()
     // Create node for transportation
     this->node = gazebo::transport::NodePtr(new gazebo::transport::Node());
     this->node->Init();
-    //this->flagPub = this->node->Advertise<reset_world_request_msgs::msgs::ResetWorldRequest>("~/world_reset");
-    
+    this->flagPub = this->node->Advertise<reset_world_request_msgs::msgs::ResetWorldRequest>("~/world_reset");
+    gzdbg << "Advertising" << std::endl;
     //this->flagPub->WaitForConnection();
     //reset_world_request_msgs::msgs::ResetWorldRequest request;
     //request.set_data("Test");
@@ -70,11 +70,12 @@ GUI_ResetWorld::GUI_ResetWorld() : GUIPlugin()
 // Callback function for button
 void GUI_ResetWorld::OnButton()
 {
-    this->flagPub->WaitForConnection();
+    //this->flagPub->WaitForConnection();
     reset_world_request_msgs::msgs::ResetWorldRequest msg_request;
-    msg_request.set_data("Test");
+    msg_request.set_data("Hello World");
     this->flagPub->Publish(msg_request);
-    gazebo::transport::fini();
+    gzdbg << "Here" << std::endl;
+    //gazebo::transport::fini();
 
 }
 

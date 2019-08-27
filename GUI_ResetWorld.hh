@@ -27,10 +27,10 @@ namespace gazebo
         protected slots: void OnButton();
 
         // Node used to establish communication with gzserver
-        private: transport::NodePtr node;
+        private: gazebo::transport::NodePtr node;
 
         // Publisher of factory messages
-        private: transport::PublisherPtr flagPub;
+        private: gazebo::transport::PublisherPtr flagPub;
 
         // Pointer for the world
         //private: physics::WorldPtr _world;
