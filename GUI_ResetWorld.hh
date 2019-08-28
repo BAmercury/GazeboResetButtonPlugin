@@ -18,10 +18,10 @@ namespace gazebo
         Q_OBJECT
 
 
-        // Constructor/Deconstructor
+        // Constructor
         public: GUI_ResetWorld();
 
-        //public: virtual ~GUI_ResetWorld();
+
 
         // Callback triggered when the button is pressed
         protected slots: void OnButton();
@@ -32,8 +32,6 @@ namespace gazebo
         // Publisher of factory messages
         private: gazebo::transport::PublisherPtr flagPub;
 
-        // Pointer for the world
-        //private: physics::WorldPtr _world;
 
 
 

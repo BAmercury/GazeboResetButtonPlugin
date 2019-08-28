@@ -13,8 +13,7 @@ namespace gazebo
 {
     class GAZEBO_VISIBLE ResetWorld : public WorldPlugin
     {
-        // Constructor
-        //public: ResetWorld();
+
         // Pointer for custom message
         public: typedef const boost::shared_ptr<
             const reset_world_request_msgs::msgs::ResetWorldRequest>

@@ -24,12 +24,13 @@ void ResetWorld::Callback(ResetWorldRequestPtr &_msg)
 
     if (_msg->data() == "Reset")
     {
-        gzdbg << "World Paused" << std::endl;
+        //gzdbg << "World Paused" << std::endl;
         this->world->SetPaused(true);
-        gzdbg << "Resetting Physics States" << std::endl;
+        //gzdbg << "Resetting Physics States" << std::endl;
         this->world->ResetPhysicsStates();
+        //gzdbg << "Resetting World" << std::endl;
         this->world->Reset();
-        gzdbg << "Resetting World" << std::endl;
+ 
     }
 
 }
