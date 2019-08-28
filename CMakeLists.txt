@@ -1,15 +1,17 @@
 cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
-set (CMAKE_AUTOMOC ON)
+#set (CMAKE_AUTOMOC ON)
 
-find_package (Qt5Widgets REQUIRED)
-find_package (Qt5Core REQUIRED)
+#find_package (Qt5Widgets REQUIRED)
+#find_package (Qt5Core REQUIRED)
+find_package(Qt4)
 find_package(Protobuf REQUIRED)
 find_package(gazebo REQUIRED)
 
+include (${QT_USE_FILE})
+add_definitions(${QT_DEFINITIONS})
 include_directories(
   SYSTEM 
   ${GAZEBO_INCLUDE_DIRS} 
-  ${Qt5Core_INCLUDE_DIRS}
   ${CMAKE_CURRENT_BINARY_DIR}/msgs
   )
 link_directories(
@@ -20,6 +22,7 @@ add_subdirectory(msgs)
 
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GAZEBO_CXX_FLAGS}")
 
+QT4_WRAP_CPP(headers_MOC GUI_ResetWorld.hh)
 
 
 add_library(gui_resetworld SHARED ${headers_MOC}
@@ -28,8 +31,9 @@ target_link_libraries(
   gui_resetworld 
   reset_world_request_msgs
   ${GAZEBO_LIBRARIES}
-  ${Qt5Core_LIBRARIES}
-  ${Qt5Widgets_LIBRARIES}
+  ${QT_LIBRARIES}
+  #${Qt5Core_LIBRARIES}
+  #${Qt5Widgets_LIBRARIES}
   ${PROTOBUF_LIBRARIES}
   )
 add_dependencies(gui_resetworld reset_world_request_msgs)
