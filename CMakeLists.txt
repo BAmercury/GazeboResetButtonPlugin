@@ -18,15 +18,9 @@ link_directories(
   )
 add_subdirectory(msgs)
 
-#set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GAZEBO_CXX_FLAGS}")
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GAZEBO_CXX_FLAGS}")
 
-# add_library(gui_example_spawn_widget SHARED ${headers_MOC}
-#   GUIExampleSpawnWidget.cc)
-# target_link_libraries(gui_example_spawn_widget ${GAZEBO_LIBRARIES}
-#     ${Qt5Core_LIBRARIES}
-#     ${Qt5Widgets_LIBRARIES}
-#     ${PROTOBUF_LIBRARIES})
-# install(TARGETS gui_example_spawn_widget DESTINATION ${GAZEBO_PLUGIN_PATH})
+
 
 add_library(gui_resetworld SHARED ${headers_MOC}
   GUI_ResetWorld.cc)
