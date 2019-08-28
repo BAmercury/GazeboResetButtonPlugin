@@ -56,7 +56,7 @@ GUI_ResetWorld::GUI_ResetWorld() : GUIPlugin()
     this->node = gazebo::transport::NodePtr(new gazebo::transport::Node());
     this->node->Init();
     this->flagPub = this->node->Advertise<reset_world_request_msgs::msgs::ResetWorldRequest>("~/world_reset");
-    gzdbg << "Advertising" << std::endl;
+    gzdbg << "Advertising World Reset Button" << std::endl;
     //this->flagPub->WaitForConnection();
     //reset_world_request_msgs::msgs::ResetWorldRequest request;
     //request.set_data("Test");
@@ -72,9 +72,9 @@ void GUI_ResetWorld::OnButton()
 {
     //this->flagPub->WaitForConnection();
     reset_world_request_msgs::msgs::ResetWorldRequest msg_request;
-    msg_request.set_data("Hello World");
+    msg_request.set_data("Reset");
     this->flagPub->Publish(msg_request);
-    gzdbg << "Here" << std::endl;
+    gzdbg << "Message Sent" << std::endl;
     //gazebo::transport::fini();
 
 }

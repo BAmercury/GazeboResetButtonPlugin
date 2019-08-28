@@ -22,12 +22,13 @@ namespace gazebo
 
         public: virtual void Load(physics::WorldPtr _world, sdf::ElementPtr _sdf);
 
+        public: void OnUpdate();
+
         // Callback for the world update events
         //private: void OnUpdate();
 
         // Callback for topic subscriber
-        public: static void Callback(ResetWorldRequestPtr &_msg);
-
+        public: void Callback(ResetWorldRequestPtr &_msg);
 
 
         // Gazebo topic name for subscriber
@@ -40,6 +41,8 @@ namespace gazebo
         // Connection Pointer for world update events
         private: event::ConnectionPtr updateConnection;
 
+        private: gazebo::transport::SubscriberPtr sub;
+        private: gazebo::transport:: NodePtr node;
 
 
 
