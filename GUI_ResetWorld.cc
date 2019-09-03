@@ -4,9 +4,7 @@
 #include <gazebo/msgs/msgs.hh>
 #include "GUI_ResetWorld.hh"
 #include <gazebo/transport/transport.hh>
-
 #include "reset_world_request.pb.h"
-#include "gz_string.pb.h"
 
 using namespace gazebo;
 
@@ -69,7 +67,7 @@ void GUI_ResetWorld::OnButton()
     reset_world_request_msgs::msgs::ResetWorldRequest msg_request;
     msg_request.set_data("Reset");
     this->flagPub->Publish(msg_request);
-    gzdbg << "Message Sent" << std::endl;
+    //gzdbg << "Message Sent" << std::endl;
     //gazebo::transport::fini();
 
 }

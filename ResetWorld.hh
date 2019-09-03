@@ -7,6 +7,7 @@
 #include <gazebo/physics/physics.hh>
 #include <gazebo/common/Event.hh>
 #include <stdio.h>
+#include <boost/shared_ptr.hpp>
 
 #include "reset_world_request.pb.h"
 namespace gazebo
