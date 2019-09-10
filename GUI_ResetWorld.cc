@@ -6,7 +6,6 @@
 #include <gazebo/transport/transport.hh>
 
 #include "reset_world_request.pb.h"
-#include "gz_string.pb.h"
 
 using namespace gazebo;
 
